@@ -1,0 +1,5 @@
+.font_size_input::-webkit-inner-spin-button,
+.font_size_input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
