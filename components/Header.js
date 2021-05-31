@@ -3,6 +3,7 @@ import LanguageMenu from "../components/LanguageMenu";
 import OrientationMenu from "../components/OrientationMenu";
 import SettingsModal from "../components/SettingsModal";
 import { useEditor } from "../context/AppContext";
+import GitHubIcon from "@material-ui/icons/GitHub";
 
 const Header = () => {
   const { language } = useEditor();
@@ -28,6 +29,13 @@ const Header = () => {
 
         {/* Opens settings modal */}
         <SettingsModal />
+
+        <a
+          href="https://github.com/ankitk26/NextPen"
+          className="flex items-center gap-2 px-4 py-2 rounded-md justify-evenly hover:text-textSecondary focus:outline-none"
+        >
+          <GitHubIcon />
+        </a>
       </div>
     </nav>
   );
