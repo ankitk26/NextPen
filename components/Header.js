@@ -1,9 +1,9 @@
+import GitHubIcon from "@material-ui/icons/GitHub";
 import Link from "next/link";
 import LanguageMenu from "../components/LanguageMenu";
 import OrientationMenu from "../components/OrientationMenu";
 import SettingsModal from "../components/SettingsModal";
 import { useEditor } from "../context/AppContext";
-import GitHubIcon from "@material-ui/icons/GitHub";
 
 const Header = () => {
   const { language } = useEditor();
