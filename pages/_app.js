@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
+import "tailwindcss/tailwind.css";
 import { AppProvider } from "../context/AppContext";
 import theme from "../src/theme";
-import "../styles/globals.css";
 
 export default function MyApp({ Component, pageProps }) {
   useEffect(() => {
