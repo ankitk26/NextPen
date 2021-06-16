@@ -3,6 +3,7 @@ import { languages } from "../constants/constants";
 import { useEditor } from "../context/AppContext";
 import DropdownMenu from "./DropdownMenu";
 import CodeIcon from "@material-ui/icons/Code";
+import cookieCutter from "cookie-cutter";
 
 const LanguageMenu = () => {
   const { setLanguage } = useEditor();
@@ -44,6 +45,7 @@ const LanguageMenu = () => {
   // Change language
   const handleChange = (value) => {
     setLanguage(value);
+    cookieCutter.set("editor_lang", value);
     setIsOpen(false);
   };
 

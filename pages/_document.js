@@ -9,6 +9,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
+          <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"

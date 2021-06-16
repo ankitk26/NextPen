@@ -7,6 +7,7 @@ const EditorTitle = ({ language, editorOpen, setEditorOpen }) => {
 
   // Toggle closing and opening the editor (only for webd)
   const toggleEditor = () => {
+    console.log("changed");
     setEditorOpen((prev) => !prev);
   };
 

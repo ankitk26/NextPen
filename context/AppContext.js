@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import cookieCutter from "cookie-cutter";
 
 export const AppContext = createContext();
 
@@ -19,6 +20,13 @@ export const AppProvider = ({ children }) => {
 
   const [headTags, setHeadTags] = useState("");
   const [cssFramework, setCssFramework] = useState("none");
+
+  useEffect(() => {
+    const lang = cookieCutter.get("editor_lang");
+    if (lang) {
+      setLanguage(lang);
+    }
+  }, [language]);
 
   return (
     <AppContext.Provider

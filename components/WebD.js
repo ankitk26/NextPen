@@ -1,11 +1,13 @@
 import { makeStyles } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import cookieCutter from "cookie-cutter";
 import dynamic from "next/dynamic";
-
-const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
-
+import { useEffect, useState } from "react";
 import { useEditor } from "../context/AppContext";
 import { getCssFrameworkLink } from "../utils/getCssFrameworkLink";
+// import MonacoEditor from "./MonacoEditor";
+// import Editor from "./Editor";
+
+const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
 
 const useStyles = makeStyles(() => ({
   rightAlign: {
@@ -20,17 +22,17 @@ const useStyles = makeStyles(() => ({
 const WebD = () => {
   const classes = useStyles();
 
-  const [html, setHtml] = useState(localStorage.getItem("html") || "");
-  const [css, setCss] = useState(localStorage.getItem("css") || "");
-  const [js, setJs] = useState(localStorage.getItem("javascript") || "");
+  const [html, setHtml] = useState(cookieCutter.get("html") || "");
+  const [css, setCss] = useState(cookieCutter.get("css") || "");
+  const [js, setJs] = useState(cookieCutter.get("javascript") || "");
+
+  const [srcDoc, setSrcDoc] = useState("");
 
   const [htmlOpen, setHtmlOpen] = useState(true);
   const [cssOpen, setCssOpen] = useState(true);
   const [jsOpen, setJsOpen] = useState(true);
 
   const { alignment, headTags, cssFramework } = useEditor();
-
-  const [srcDoc, setSrcDoc] = useState("");
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -68,7 +70,7 @@ const WebD = () => {
   };
 
   return (
-    <div className={`grid h-full bg-white mx-auto ${container(alignment)}`}>
+    <div className={`grid h-full bg-white mx-auto  ${container(alignment)}`}>
       {/* Adjust orientation of editors */}
       <div
         className={`flex bg-background p-1 pr-3 gap-4 ${

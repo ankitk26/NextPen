@@ -1,10 +1,22 @@
 import { Button } from "@material-ui/core";
 import CloseIcon from "@material-ui/icons/Close";
-import { useEffect, useState } from "react";
+import SettingsIcon from "@material-ui/icons/Settings";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { useEditor } from "../context/AppContext";
 import CssFrameworks from "./CssFrameworks";
-import SettingsIcon from "@material-ui/icons/Settings";
+import SettingsTabs from "./SettingsTabs";
+
+const ModalHeader = ({ closeModal }) => {
+  return (
+    <header className="flex items-center justify-between p-2 border-b border-borderPrimary">
+      <h3 className="text-xl font-semibold text-white">Settings</h3>
+      <button className="p-1 text-3xl focus:outline-none" onClick={closeModal}>
+        <CloseIcon className="text-textSecondary hover:text-white" />
+      </button>
+    </header>
+  );
+};
 
 export default function Modal() {
   const [showModal, setShowModal] = useState(false);
@@ -45,56 +57,12 @@ export default function Modal() {
               {/* Content */}
               <div className="relative flex flex-col w-full h-full p-3 border-0 shadow-lg outline-none bg-paper focus:outline-none">
                 {/* Header */}
-                <header className="flex items-center justify-between p-2 border-b border-borderPrimary">
-                  <h3 className="text-xl font-semibold text-white">Settings</h3>
-                  <button
-                    className="p-1 text-3xl focus:outline-none"
-                    onClick={closeModal}
-                  >
-                    <CloseIcon className="text-textSecondary hover:text-white" />
-                  </button>
-                </header>
+                <ModalHeader closeModal={closeModal} />
 
                 {/* Body */}
                 <div className="relative grid flex-auto grid-cols-12 gap-5 p-3">
                   <div className="col-span-3">
-                    <ul className="flex flex-col gap-2">
-                      {/* Display html and css settings only for webd */}
-                      {language === "webd" && (
-                        <>
-                          <li
-                            className={`${
-                              openTab === 1
-                                ? "border-primary border-l-2 bg-paper-secondary"
-                                : ""
-                            } p-1 pl-3 cursor-pointer hover:bg-paper-secondary`}
-                            onClick={() => setOpenTab(1)}
-                          >
-                            HTML
-                          </li>
-                          <li
-                            className={`${
-                              openTab === 2
-                                ? "border-primary border-l-2 bg-paper-secondary"
-                                : ""
-                            } p-1 pl-3 cursor-pointer hover:bg-paper-secondary`}
-                            onClick={() => setOpenTab(2)}
-                          >
-                            CSS
-                          </li>
-                        </>
-                      )}
-                      <li
-                        className={`${
-                          openTab === 3
-                            ? "border-primary border-l-2 bg-paper-secondary"
-                            : ""
-                        } p-1 pl-3 mt-5 cursor-pointer hover:bg-paper-secondary`}
-                        onClick={() => setOpenTab(3)}
-                      >
-                        Editor
-                      </li>
-                    </ul>
+                    <SettingsTabs openTab={openTab} setOpenTab={setOpenTab} />
                   </div>
 
                   <div className="col-span-9">

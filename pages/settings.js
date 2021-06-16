@@ -22,7 +22,10 @@ const Settings = () => {
   const lineNumbersChange = (e) => setShowLineNumbers(e.target.checked);
 
   return (
-    <Layout title="Settings | Change editor preferences">
+    <Layout
+      title="Settings | Change editor preferences"
+      content="Change editor settings and preferences"
+    >
       <div className="grid w-full h-full grid-cols-2 p-8 mb-10 text-center bg-background">
         {/* Preview Section */}
         <Preview />

@@ -1,10 +1,12 @@
 import Head from "next/head";
 import Header from "./Header";
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, content, children }) => {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content={content} />
         <title>{title}</title>
       </Head>
 

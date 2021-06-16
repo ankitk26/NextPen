@@ -1,4 +1,5 @@
 module.exports = {
+  mode: "jit",
   purge: [
     "./src/**/*.{js,jsx,ts,tsx}",
     "./public/index.html",
@@ -11,7 +12,7 @@ module.exports = {
       colors: {
         paper: "#161A23",
         background: "#0D1117",
-        secondary: "#F8333C",
+        secondary: "#d32f2f",
         primary: "#1f71eb",
         "paper-secondary": "#1D2028",
         textSecondary: "#c9d1d9",

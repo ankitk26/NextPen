@@ -1,9 +1,8 @@
 import { AppBar, makeStyles, Tab, Tabs } from "@material-ui/core";
+import dynamic from "next/dynamic";
 import { useState } from "react";
 import { cssPreview, htmlPreview, jsPreview } from "../constants/constants";
 import { useEditor } from "../context/AppContext";
-
-import dynamic from "next/dynamic";
 
 const Editor = dynamic(() => import("../components/Editor"), { ssr: false });
 
@@ -31,13 +30,13 @@ const a11yProps = (index) => {
   };
 };
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     backgroundColor: "#161A23",
     shadow: "0",
   },
   indicator: {
-    backgroundColor: "#F8333C",
+    backgroundColor: theme.palette.primary.main,
   },
   tab: {
     color: "#EFEDE6",
